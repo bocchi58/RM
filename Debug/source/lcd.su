@@ -1,0 +1,6 @@
+C:\Users\86155\Documents\MCUXpressoIDE_11.9.0_2144\workspace\evkmimxrt1020_dev_hid_mouse_lite_bm\drivers/fsl_lpspi.h:1017:20:LPSPI_WriteData	16	static
+../source/lcd.c:11:6:Delayms	24	static
+../source/lcd.c:23:6:LCD_ClearScreen	4	static
+../source/lcd.c:30:6:LCD_WriteCommand	16	static
+../source/lcd.c:39:6:LCD_WriteData	16	static
+../source/lcd.c:45:6:LCD_Init	8	static
