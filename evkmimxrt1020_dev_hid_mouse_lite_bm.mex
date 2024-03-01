@@ -60,12 +60,12 @@
                         <data>true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="Peripheral" resourceId="ADC_ETC" description="Peripheral ADC_ETC signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
+                  <dependency resourceType="Peripheral" resourceId="TMR1" description="Peripheral TMR1 signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="Peripheral" resourceId="TMR1" description="Peripheral TMR1 signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
+                  <dependency resourceType="Peripheral" resourceId="TMR2" description="Peripheral TMR2 signals are routed in the Pins Tool, but the peripheral is not initialized in the Peripherals Tool." problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
@@ -135,11 +135,6 @@
                   <pin peripheral="LPSPI4" signal="SDI" pin_num="121" pin_signal="GPIO_EMC_35"/>
                   <pin peripheral="LPSPI4" signal="SCK" pin_num="124" pin_signal="GPIO_EMC_32"/>
                   <pin peripheral="LPSPI4" signal="PCS1" pin_num="120" pin_signal="GPIO_EMC_36"/>
-                  <pin peripheral="ADC_ETC" signal="XBAR1_COCO, 0" pin_num="128" pin_signal="GPIO_EMC_28">
-                     <pin_features>
-                        <pin_feature name="identifier" value=""/>
-                     </pin_features>
-                  </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 05" pin_num="13" pin_signal="GPIO_EMC_05"/>
                   <pin peripheral="TMR1" signal="TIMER_INPUT, 0" pin_num="10" pin_signal="GPIO_EMC_07">
                      <pin_features>
@@ -148,6 +143,8 @@
                   </pin>
                   <pin peripheral="TMR1" signal="TIMER_INPUT, 1" pin_num="8" pin_signal="GPIO_EMC_09"/>
                   <pin peripheral="GPIO3" signal="gpio_io, 07" pin_num="117" pin_signal="GPIO_EMC_39"/>
+                  <pin peripheral="TMR2" signal="TIMER_INPUT, 0" pin_num="128" pin_signal="GPIO_EMC_28"/>
+                  <pin peripheral="GPIO2" signal="gpio_io, 31" pin_num="125" pin_signal="GPIO_EMC_31"/>
                </pins>
             </function>
          </functions_list>
@@ -593,16 +590,6 @@
                   <data type="Version">2.6.0</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.adc_etc" description="工具链/IDE工程中未找到ADC_ETC Driver。工程不会被编译！" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.adc_etc" description="工具链/IDE工程不支持ADC_ETC Driver版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="greaterOrEqual">
-                  <data type="Version" maxValue="2.2.9">2.1.0</data>
-               </feature>
-            </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.qtmr" description="工具链/IDE工程中未找到QTMR Driver。工程不会被编译！" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
@@ -630,6 +617,7 @@
          </generated_project_files>
          <peripherals_profile>
             <processor_version>15.0.1</processor_version>
+            <ignored_component_migration_offer/>
          </peripherals_profile>
          <functional_groups>
             <functional_group name="BOARD_InitPeripherals" uuid="165bd7d6-5976-4214-a3e3-1a978919e481" called_from_default_init="true" id_prefix="" core="core0">
@@ -686,8 +674,13 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC_ETC.adc_etc_xbar1_trig.1" description="Signal 1, channel XBAR1_TRIG is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="TMR1.tmr_sec_in.0" description="Timer input 0 of peripheral TMR1 is not routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="TMR1.tmr_sec_in.0" description="Timer input 0 of peripheral TMR1 is not routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="routed" evaluation="equal">
                         <data type="Boolean">true</data>
                      </feature>
                   </dependency>
@@ -696,12 +689,7 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="TMR1.tmr_sec_in.0" description="Timer input 0 of peripheral TMR1 is not routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="TMR1.tmr_sec_in.0" description="Timer input 0 of peripheral TMR1 is not routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="TMR2.tmr_sec_in.0" description="Timer input 0 of peripheral TMR2 is not routed" problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="equal">
                         <data type="Boolean">true</data>
                      </feature>
@@ -847,47 +835,6 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="ADC_ETC" uuid="e86cbaaa-4301-44e3-8a38-715832e59b8e" type="adc_etc" type_id="adc_etc_05e3d3ed2376fa5bde10b24efc9ee456" mode="ADC_ETC_SW" peripheral="ADC_ETC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="fsl_adc_etc">
-                        <struct name="config">
-                           <struct name="clockConfig_t">
-                              <setting name="clockSource" value="BusInterfaceClock"/>
-                              <setting name="clockSourceFreq" value="ClocksTool_DefaultInit"/>
-                              <setting name="clockPreDivider" value="1"/>
-                           </struct>
-                           <setting name="dmaMode" value="kADC_ETC_TrigDMAWithLatchedSignal"/>
-                        </struct>
-                        <array name="triggers_config">
-                           <struct name="0">
-                              <setting name="triggerNameValue" value="ADC_ETC"/>
-                              <setting name="initializeTrigger" value="true"/>
-                              <setting name="trigger" value="XBAR1_TRIG.1"/>
-                              <setting name="triggerPriority" value="0"/>
-                              <setting name="enableSWTriggerMode" value="true"/>
-                              <setting name="enableSyncMode" value="false"/>
-                              <setting name="enableDMA" value="false"/>
-                              <setting name="initialDelay_str" value="1000"/>
-                              <setting name="sampleIntervalDelay_str" value="1000"/>
-                              <array name="triggerChain">
-                                 <struct name="0">
-                                    <setting name="enableB2BMode" value="false"/>
-                                    <setting name="ADCHCRegisterSelect" value="5"/>
-                                    <setting name="channelNumber" value="ADC1.IN.1"/>
-                                    <setting name="e_InterruptEnable" value="kADC_ETC_InterruptDisable"/>
-                                 </struct>
-                              </array>
-                           </struct>
-                        </array>
-                        <setting name="enableInterrupt" value="true"/>
-                        <struct name="adc_etc_interrupt_err">
-                           <setting name="IRQn" value="ADC_ETC_ERROR_IRQ_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
-                           <setting name="enable_priority" value="false"/>
-                           <setting name="priority" value="0"/>
-                           <setting name="enable_custom_name" value="false"/>
-                        </struct>
-                     </config_set>
-                  </instance>
                   <instance name="TMR1" uuid="d5054f33-f382-4b18-b855-d6081e936cee" type="qtmr" type_id="qtmr_460dd7aa3f3371843c2548acd54252b0" mode="general" peripheral="TMR1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="fsl_qtmr">
                         <setting name="clockSource" value="BusInterfaceClock"/>
@@ -952,6 +899,64 @@
                               <setting name="enable_custom_name" value="false"/>
                            </struct>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="TMR2" uuid="ccac3ee4-1a11-4e57-805d-c0d4db6ae5e5" type="qtmr" type_id="qtmr_460dd7aa3f3371843c2548acd54252b0" mode="general" peripheral="TMR2" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_qtmr">
+                        <setting name="clockSource" value="BusInterfaceClock"/>
+                        <setting name="clockSourceFreq" value="ClocksTool_DefaultInit"/>
+                        <array name="qtmr_channels">
+                           <struct name="0">
+                              <setting name="channel_prefix_id" value="Channel_0"/>
+                              <setting name="channel" value="kQTMR_Channel_0"/>
+                              <setting name="primarySource" value="kQTMR_ClockDivide_2"/>
+                              <setting name="secondarySource" value="kQTMR_Counter0InputPin"/>
+                              <setting name="countingMode" value="kQTMR_PriSrcRiseAndFallEdge"/>
+                              <setting name="enableMasterMode" value="false"/>
+                              <setting name="enableExternalForce" value="false"/>
+                              <setting name="faultFilterCount" value="3"/>
+                              <setting name="faultFilterPeriod" value="0"/>
+                              <setting name="debugMode" value="kQTMR_RunNormalInDebug"/>
+                              <setting name="timerModeInit" value="inputCapture"/>
+                              <struct name="inputCaptureMode">
+                                 <setting name="inputPolarity" value="false"/>
+                                 <setting name="reloadOnCapture" value="false"/>
+                                 <setting name="captureMode" value="kQTMR_RisingAndFallingEdge"/>
+                              </struct>
+                              <setting name="dmaIntMode" value="interrupt"/>
+                              <set name="interrupts">
+                                 <selected>
+                                    <id>kQTMR_EdgeInterruptEnable</id>
+                                 </selected>
+                              </set>
+                           </struct>
+                        </array>
+                        <struct name="interruptVector">
+                           <setting name="enable_irq" value="true"/>
+                           <struct name="interrupt">
+                              <setting name="IRQn" value="TMR2_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="TMR1_custom_init" uuid="3ae483a3-5f09-4476-ae75-626d60c2d3de" type="custom_init" type_id="custom_init_87bfd8659a9d6953df1cceb1e02ed9b8" mode="general" peripheral="TMR1" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="general">
+                        <setting name="user_includes" value=""/>
+                        <setting name="user_definitions" value=""/>
+                        <setting name="global_init" value=""/>
+                        <setting name="user_code" value=""/>
+                     </config_set>
+                  </instance>
+                  <instance name="TMR1_custom_init_2" uuid="c0653851-3967-4eb0-9396-98223302096f" type="custom_init" type_id="custom_init_87bfd8659a9d6953df1cceb1e02ed9b8" mode="general" peripheral="TMR1" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="general">
+                        <setting name="user_includes" value=""/>
+                        <setting name="user_definitions" value=""/>
+                        <setting name="global_init" value=""/>
+                        <setting name="user_code" value=""/>
                      </config_set>
                   </instance>
                </instances>

@@ -52,11 +52,12 @@ BOARD_InitPins:
   - {pin_num: '121', peripheral: LPSPI4, signal: SDI, pin_signal: GPIO_EMC_35}
   - {pin_num: '124', peripheral: LPSPI4, signal: SCK, pin_signal: GPIO_EMC_32}
   - {pin_num: '120', peripheral: LPSPI4, signal: PCS1, pin_signal: GPIO_EMC_36}
-  - {pin_num: '128', peripheral: ADC_ETC, signal: 'XBAR1_COCO, 0', pin_signal: GPIO_EMC_28, identifier: ''}
   - {pin_num: '13', peripheral: GPIO2, signal: 'gpio_io, 05', pin_signal: GPIO_EMC_05}
   - {pin_num: '10', peripheral: TMR1, signal: 'TIMER_INPUT, 0', pin_signal: GPIO_EMC_07, identifier: ''}
   - {pin_num: '8', peripheral: TMR1, signal: 'TIMER_INPUT, 1', pin_signal: GPIO_EMC_09}
   - {pin_num: '117', peripheral: GPIO3, signal: 'gpio_io, 07', pin_signal: GPIO_EMC_39}
+  - {pin_num: '128', peripheral: TMR2, signal: 'TIMER_INPUT, 0', pin_signal: GPIO_EMC_28}
+  - {pin_num: '125', peripheral: GPIO2, signal: 'gpio_io, 31', pin_signal: GPIO_EMC_31}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -78,6 +79,7 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_07_XBAR1_INOUT07, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_09_XBAR1_INOUT09, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_28_XBAR1_INOUT18, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_31_GPIO2_IO31, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_32_LPSPI4_SCK, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_33_LPSPI4_PCS0, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_34_LPSPI4_SDO, 0U); 
@@ -85,16 +87,17 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_36_LPSPI4_PCS1, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_39_GPIO3_IO07, 0U); 
   IOMUXC_GPR->GPR6 = ((IOMUXC_GPR->GPR6 &
-    (~(IOMUXC_GPR_GPR6_QTIMER1_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_QTIMER1_TRM1_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_7_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_9_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_18_MASK))) 
+    (~(IOMUXC_GPR_GPR6_QTIMER1_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_QTIMER1_TRM1_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_7_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_9_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_18_MASK))) 
       | IOMUXC_GPR_GPR6_QTIMER1_TRM0_INPUT_SEL(0x01U) 
       | IOMUXC_GPR_GPR6_QTIMER1_TRM1_INPUT_SEL(0x01U) 
+      | IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL(0x01U) 
       | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_7(0x00U) 
       | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_9(0x00U) 
-      | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_18(0x01U) 
+      | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_18(0x00U) 
     );
   XBARA_SetSignalsConnection(XBARA, kXBARA1_InputIomuxXbarInout07, kXBARA1_OutputQtimer1Tmr0); 
   XBARA_SetSignalsConnection(XBARA, kXBARA1_InputIomuxXbarInout09, kXBARA1_OutputQtimer1Tmr1); 
-  XBARA_SetSignalsConnection(XBARA, kXBARA1_InputAdcEtc1Coco0, kXBARA1_OutputIomuxXbarInout18); 
+  XBARA_SetSignalsConnection(XBARA, kXBARA1_InputIomuxXbarInout18, kXBARA1_OutputQtimer2Tmr0); 
   IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_06_LPUART1_TX, 0x10B0U); 
   IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_07_LPUART1_RX, 0x10B0U); 
   IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0x70A0U); 

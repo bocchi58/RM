@@ -112,6 +112,26 @@ void BOARD_InitBootPins(void);
 #define BOARD_INITPINS_SEMC_D15_PIN                                           7U   /*!< PORT pin number */
 #define BOARD_INITPINS_SEMC_D15_PIN_MASK                              (1U << 7U)   /*!< PORT pin mask */
 
+/* GPIO_EMC_28 (number 128), SEMC_DQS */
+/* Routed pin properties */
+#define BOARD_INITPINS_SEMC_DQS_PERIPHERAL                                  TMR2   /*!< Peripheral name */
+#define BOARD_INITPINS_SEMC_DQS_SIGNAL                               TIMER_INPUT   /*!< Signal name */
+#define BOARD_INITPINS_SEMC_DQS_CHANNEL                                       0U   /*!< Signal channel */
+
+/* GPIO_EMC_31 (number 125), SEMC_DM1/U14[39] */
+/* Routed pin properties */
+#define BOARD_INITPINS_SEMC_DM1_PERIPHERAL                                 GPIO2   /*!< Peripheral name */
+#define BOARD_INITPINS_SEMC_DM1_SIGNAL                                   gpio_io   /*!< Signal name */
+#define BOARD_INITPINS_SEMC_DM1_CHANNEL                                      31U   /*!< Signal channel */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_SEMC_DM1_GPIO                                       GPIO2   /*!< GPIO peripheral base pointer */
+#define BOARD_INITPINS_SEMC_DM1_GPIO_PIN                                     31U   /*!< GPIO pin number */
+#define BOARD_INITPINS_SEMC_DM1_GPIO_PIN_MASK                        (1U << 31U)   /*!< GPIO pin mask */
+#define BOARD_INITPINS_SEMC_DM1_PORT                                       GPIO2   /*!< PORT peripheral base pointer */
+#define BOARD_INITPINS_SEMC_DM1_PIN                                          31U   /*!< PORT pin number */
+#define BOARD_INITPINS_SEMC_DM1_PIN_MASK                             (1U << 31U)   /*!< PORT pin mask */
+
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.

@@ -1,5 +1,5 @@
-C:\Users\86155\Documents\MCUXpressoIDE_11.9.0_2144\workspace\evkmimxrt1020_dev_hid_mouse_lite_bm\drivers/fsl_common_arm.h:788:24:DisableGlobalIRQ	16	static
-C:\Users\86155\Documents\MCUXpressoIDE_11.9.0_2144\workspace\evkmimxrt1020_dev_hid_mouse_lite_bm\drivers/fsl_common_arm.h:814:20:EnableGlobalIRQ	24	static
+C:\Users\86155\Desktop\x\workspace\mouse\drivers/fsl_common_arm.h:788:24:DisableGlobalIRQ	16	static
+C:\Users\86155\Desktop\x\workspace\mouse\drivers/fsl_common_arm.h:814:20:EnableGlobalIRQ	24	static
 ../component/osa/fsl_os_abstraction_bm.c:161:18:main_task	16	static
 ../component/osa/fsl_os_abstraction_bm.c:191:7:OSA_MemoryAllocate	24	static
 ../component/osa/fsl_os_abstraction_bm.c:209:6:OSA_MemoryFree	16	static

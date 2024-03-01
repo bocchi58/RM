@@ -14,7 +14,6 @@
 #include "fsl_clock.h"
 #include "fsl_adc.h"
 #include "fsl_lpspi.h"
-#include "fsl_adc_etc.h"
 #include "fsl_qtmr.h"
 
 #if defined(__cplusplus)
@@ -51,31 +50,6 @@ extern "C" {
 #define LPSPI4_PERIPHERAL LPSPI4
 /* Definition of clock source */
 #define LPSPI4_CLOCK_FREQ 105600000UL
-/* BOARD_InitPeripherals defines for ADC_ETC */
-/* Definition of peripheral ID */
-#define ADC_ETC_PERIPHERAL ADC_ETC
-/* Definition of the names for trigger configurations. Used as index to ADC_ETC_trigger_config array. */
-enum ADC_ETC_trigger_config_names
-{
-  ADC_ETC_ADC_ETC = 0U
-};
-/* Definition of the names for trigger group parameter of multiple functions, like ADC_ETC_SetTriggerConfig() and ADC_ETC_SetTriggerChainConfig(). */
-enum ADC_ETC_trigger_config_trigger_group_names
-{
-  ADC_ETC_ADC_ETC_TG = 5U
-};
-/* ADC_ETC interrupt vector ID (number). */
-#define ADC_ETC_ADC_ETC_0_IRQN ADC_ETC_IRQ0_IRQn
-/* ADC_ETC interrupt vector ID (number). */
-#define ADC_ETC_ADC_ETC_1_IRQN ADC_ETC_IRQ1_IRQn
-/* ADC_ETC interrupt vector ID (number). */
-#define ADC_ETC_ADC_ETC_2_IRQN ADC_ETC_IRQ2_IRQn
-/* ADC_ETC interrupt vector ID (number). */
-#define ADC_ETC_ADC_ETC_3_IRQN noInt
-/* ADC_ETC interrupt vector ID (number). */
-#define ADC_ETC_ADC_ETC_ERROR_IRQN ADC_ETC_ERROR_IRQ_IRQn
-/* ADC_ETC interrupt handler identifier. */
-#define ADC_ETC_ADC_ETC_ERROR_IRQHANDLER ADC_ETC_ERROR_IRQ_IRQHandler
 /* Definition of peripheral ID */
 #define TMR1_PERIPHERAL TMR1
 /* Definition of the timer channel Channel_0. */
@@ -92,6 +66,16 @@ enum ADC_ETC_trigger_config_trigger_group_names
 #define TMR1_IRQ_PRIORITY 0
 /* TMR1 interrupt handler identifier. */
 #define TMR1_IRQHANDLER TMR1_IRQHandler
+/* Definition of peripheral ID */
+#define TMR2_PERIPHERAL TMR2
+/* Definition of the timer channel Channel_0. */
+#define TMR2_CHANNEL_0_CHANNEL kQTMR_Channel_0
+/* Definition of the timer channel Channel_0 clock source frequency. */
+#define TMR2_CHANNEL_0_CLOCK_SOURCE 62500000UL
+/* TMR2 interrupt vector ID (number). */
+#define TMR2_IRQN TMR2_IRQn
+/* TMR2 interrupt handler identifier. */
+#define TMR2_IRQHANDLER TMR2_IRQHandler
 
 /***********************************************************************************************************************
  * Global variables
@@ -100,11 +84,9 @@ extern const lpuart_config_t LPUART1_config;
 extern const adc_config_t ADC1_config;
 extern const adc_channel_config_t ADC1_channels_config[1];
 extern const lpspi_master_config_t LPSPI4_config;
-extern const adc_etc_config_t ADC_ETC_config;
-extern const adc_etc_trigger_config_t ADC_ETC_trigger_config[1];
-extern const adc_etc_trigger_chain_config_t ADC_ETC_ADC_ETC_chain_config[1];
 extern const qtmr_config_t TMR1_Channel_0_config;
 extern const qtmr_config_t TMR1_Channel_1_config;
+extern const qtmr_config_t TMR2_Channel_0_config;
 
 /***********************************************************************************************************************
  * Initialization functions

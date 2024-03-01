@@ -156,7 +156,6 @@ void USB_DeviceTaskFn(void *deviceHandle)
 //dir根据adc采集到的值进行判断，偏移量为adc采集到的值的映射
 uint8_t dir; //将dir修改为全局变量
 uint16_t adcResult; //对采集到的adc的值进行映射
-
 static usb_status_t USB_DeviceHidMouseAction(void)
 {
 	dir = adcResult;
@@ -647,6 +646,7 @@ void main(void)
     BOARD_InitDebugConsole();
     BOARD_InitBootPeripherals();
     LCD_Init(); //初始化lcd
+    LCD_Fill(0,0,lcddev.width,lcddev.height,WHITE);
 
     /* GPIO configuration on GPIO_AD_B1_11 (pin 79) */
     gpio_pin_config_t gpio1_pin27_config = {

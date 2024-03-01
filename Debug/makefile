@@ -38,7 +38,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := evkmimxrt1020_dev_hid_mouse_lite_bm
+BUILD_ARTIFACT_NAME := mouse
 BUILD_ARTIFACT_EXTENSION := axf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -50,24 +50,24 @@ all:
 	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
-main-build: evkmimxrt1020_dev_hid_mouse_lite_bm.axf
+main-build: mouse.axf
 
 # Tool invocations
-evkmimxrt1020_dev_hid_mouse_lite_bm.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+mouse.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -no-warn-rwx-segments -Xlinker -Map="evkmimxrt1020_dev_hid_mouse_lite_bm.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -T evkmimxrt1020_dev_hid_mouse_lite_bm_Debug.ld -o "evkmimxrt1020_dev_hid_mouse_lite_bm.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -Xlinker -no-warn-rwx-segments -Xlinker -Map="mouse.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -T mouse_Debug.ld -o "mouse.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) evkmimxrt1020_dev_hid_mouse_lite_bm.axf
+	-$(RM) mouse.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "evkmimxrt1020_dev_hid_mouse_lite_bm.axf"; # arm-none-eabi-objcopy -v -O binary "evkmimxrt1020_dev_hid_mouse_lite_bm.axf" "evkmimxrt1020_dev_hid_mouse_lite_bm.bin" ; # checksum -p MIMXRT1021xxxxx -d "evkmimxrt1020_dev_hid_mouse_lite_bm.bin";
+	-arm-none-eabi-size "mouse.axf"; # arm-none-eabi-objcopy -v -O binary "mouse.axf" "mouse.bin" ; # checksum -p MIMXRT1021xxxxx -d "mouse.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents main-build post-build

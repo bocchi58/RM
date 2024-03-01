@@ -304,7 +304,7 @@
 								<option id="com.crt.advproject.link.gcc.lto.641488342" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.link.gcc.lto"/>
 								<option id="com.crt.advproject.link.gcc.lto.optmization.level.885258272" name="Link-time optimization level" superClass="com.crt.advproject.link.gcc.lto.optmization.level"/>
 								<option id="com.crt.advproject.link.manage.431711811" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.script.1706570627" name="Linker script" superClass="com.crt.advproject.link.script" value="evkmimxrt1020_dev_hid_mouse_lite_bm_Debug.ld" valueType="string"/>
+								<option id="com.crt.advproject.link.script.1706570627" name="Linker script" superClass="com.crt.advproject.link.script" value="mouse_Debug.ld" valueType="string"/>
 								<option id="com.crt.advproject.link.scriptdir.1607249806" name="Script path" superClass="com.crt.advproject.link.scriptdir"/>
 								<option id="com.crt.advproject.link.crpenable.1829020071" name="Enable automatic placement of Code Read Protection field in image" superClass="com.crt.advproject.link.crpenable"/>
 								<option id="com.crt.advproject.link.flashconfigenable.198065167" name="Enable automatic placement of Flash Configuration field in image" superClass="com.crt.advproject.link.flashconfigenable" value="true" valueType="boolean"/>
@@ -646,7 +646,7 @@
 								<option id="com.crt.advproject.link.gcc.lto.optmization.level.1121862235" name="Link-time optimization level" superClass="com.crt.advproject.link.gcc.lto.optmization.level"/>
 								<option id="com.crt.advproject.link.fpu.1558047046" name="Floating point" superClass="com.crt.advproject.link.fpu" value="com.crt.advproject.link.fpu.fpv5dp.hard" valueType="enumerated"/>
 								<option id="com.crt.advproject.link.manage.1428536651" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.script.397023779" name="Linker script" superClass="com.crt.advproject.link.script" value="evkmimxrt1020_dev_hid_mouse_lite_bm_Release.ld" valueType="string"/>
+								<option id="com.crt.advproject.link.script.397023779" name="Linker script" superClass="com.crt.advproject.link.script" value="mouse_Release.ld" valueType="string"/>
 								<option id="com.crt.advproject.link.scriptdir.1314076536" name="Script path" superClass="com.crt.advproject.link.scriptdir"/>
 								<option id="com.crt.advproject.link.crpenable.1712319263" name="Enable automatic placement of Code Read Protection field in image" superClass="com.crt.advproject.link.crpenable"/>
 								<option id="com.crt.advproject.link.flashconfigenable.795944122" name="Enable automatic placement of Flash Configuration field in image" superClass="com.crt.advproject.link.flashconfigenable" value="true" valueType="boolean"/>

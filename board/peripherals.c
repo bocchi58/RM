@@ -303,91 +303,6 @@ static void LPSPI4_init(void) {
 }
 
 /***********************************************************************************************************************
- * ADC_ETC initialization code
- **********************************************************************************************************************/
-/* clang-format off */
-/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
-instance:
-- name: 'ADC_ETC'
-- type: 'adc_etc'
-- mode: 'ADC_ETC_SW'
-- custom_name_enabled: 'false'
-- type_id: 'adc_etc_05e3d3ed2376fa5bde10b24efc9ee456'
-- functional_group: 'BOARD_InitPeripherals'
-- peripheral: 'ADC_ETC'
-- config_sets:
-  - fsl_adc_etc:
-    - config:
-      - clockConfig_t:
-        - clockSource: 'BusInterfaceClock'
-        - clockSourceFreq: 'ClocksTool_DefaultInit'
-        - clockPreDivider: '1'
-      - dmaMode: 'kADC_ETC_TrigDMAWithLatchedSignal'
-    - triggers_config:
-      - 0:
-        - triggerNameValue: 'ADC_ETC'
-        - initializeTrigger: 'true'
-        - trigger: 'XBAR1_TRIG.1'
-        - triggerPriority: '0'
-        - enableSWTriggerMode: 'true'
-        - enableSyncMode: 'false'
-        - enableDMA: 'false'
-        - initialDelay_str: '1000'
-        - sampleIntervalDelay_str: '1000'
-        - triggerChain:
-          - 0:
-            - enableB2BMode: 'false'
-            - ADCHCRegisterSelect: '5'
-            - channelNumber: 'ADC1.IN.1'
-            - e_InterruptEnable: 'kADC_ETC_InterruptDisable'
-    - enableInterrupt: 'true'
-    - adc_etc_interrupt_err:
-      - IRQn: 'ADC_ETC_ERROR_IRQ_IRQn'
-      - enable_interrrupt: 'enabled'
-      - enable_priority: 'false'
-      - priority: '0'
-      - enable_custom_name: 'false'
- * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
-/* clang-format on */
-/* ADC_ETC configuration */
-const adc_etc_config_t ADC_ETC_config = {
-  .clockPreDivider = 0,
-  .dmaMode = kADC_ETC_TrigDMAWithLatchedSignal,
-  .XBARtriggerMask = 32
-};
-/* ADC_ETC triggers configuration */
-const adc_etc_trigger_config_t ADC_ETC_trigger_config[1] = {
-  {
-    .triggerPriority = 0,
-    .enableSWTriggerMode = true,
-    .enableSyncMode = false,
-    .initialDelay = 1000,
-    .sampleIntervalDelay = 1000,
-    .triggerChainLength = 0
-  }
-};
-/* ADC_ETC chain configurations for appropriate (see name of these arrays) trigger configuration */
-const adc_etc_trigger_chain_config_t ADC_ETC_ADC_ETC_chain_config[1] = {
-  {
-    .enableB2BMode = false,
-    .ADCHCRegisterSelect = 32,
-    .ADCChannelSelect = 1,
-    .InterruptEnable = kADC_ETC_InterruptDisable,
-  }
-};
-
-static void ADC_ETC_init(void) {
-  /* ADC_ETC initialization */
-  ADC_ETC_Init(ADC_ETC_PERIPHERAL, &ADC_ETC_config);
-  /* Initialize ADC_ETC trigger 5. */
-  ADC_ETC_SetTriggerConfig(ADC_ETC_PERIPHERAL, ADC_ETC_ADC_ETC_TG, &ADC_ETC_trigger_config[ADC_ETC_ADC_ETC]);
-  /* Initialize ADC_ETC chain configuration for trigger 5. */
-  ADC_ETC_SetTriggerChainConfig(ADC_ETC_PERIPHERAL, ADC_ETC_ADC_ETC_TG, 0U, &ADC_ETC_ADC_ETC_chain_config[0]);
-  /* Enable interrupt ADC_ETC_ERROR_IRQ_IRQn request in the NVIC. */
-  EnableIRQ(ADC_ETC_ADC_ETC_ERROR_IRQN);
-}
-
-/***********************************************************************************************************************
  * TMR1 initialization code
  **********************************************************************************************************************/
 /* clang-format off */
@@ -494,6 +409,75 @@ static void TMR1_init(void) {
 }
 
 /***********************************************************************************************************************
+ * TMR2 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'TMR2'
+- type: 'qtmr'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'qtmr_460dd7aa3f3371843c2548acd54252b0'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'TMR2'
+- config_sets:
+  - fsl_qtmr:
+    - clockSource: 'BusInterfaceClock'
+    - clockSourceFreq: 'ClocksTool_DefaultInit'
+    - qtmr_channels:
+      - 0:
+        - channel_prefix_id: 'Channel_0'
+        - channel: 'kQTMR_Channel_0'
+        - primarySource: 'kQTMR_ClockDivide_2'
+        - secondarySource: 'kQTMR_Counter0InputPin'
+        - countingMode: 'kQTMR_PriSrcRiseAndFallEdge'
+        - enableMasterMode: 'false'
+        - enableExternalForce: 'false'
+        - faultFilterCount: '3'
+        - faultFilterPeriod: '0'
+        - debugMode: 'kQTMR_RunNormalInDebug'
+        - timerModeInit: 'inputCapture'
+        - inputCaptureMode:
+          - inputPolarity: 'false'
+          - reloadOnCapture: 'false'
+          - captureMode: 'kQTMR_RisingAndFallingEdge'
+        - dmaIntMode: 'interrupt'
+        - interrupts: 'kQTMR_EdgeInterruptEnable'
+    - interruptVector:
+      - enable_irq: 'true'
+      - interrupt:
+        - IRQn: 'TMR2_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+const qtmr_config_t TMR2_Channel_0_config = {
+  .primarySource = kQTMR_ClockDivide_2,
+  .secondarySource = kQTMR_Counter0InputPin,
+  .enableMasterMode = false,
+  .enableExternalForce = false,
+  .faultFilterCount = 0,
+  .faultFilterPeriod = 0,
+  .debugMode = kQTMR_RunNormalInDebug
+};
+
+static void TMR2_init(void) {
+  /* Quad timer channel Channel_0 peripheral initialization */
+  QTMR_Init(TMR2_PERIPHERAL, TMR2_CHANNEL_0_CHANNEL, &TMR2_Channel_0_config);
+  /* Setup the Input capture mode of the timer channel */
+  QTMR_SetupInputCapture(TMR2_PERIPHERAL, TMR2_CHANNEL_0_CHANNEL, kQTMR_Counter0InputPin, false, false, kQTMR_RisingAndFallingEdge);
+  /* Enable interrupt requests of the timer channel */
+  QTMR_EnableInterrupts(TMR2_PERIPHERAL, TMR2_CHANNEL_0_CHANNEL, kQTMR_EdgeInterruptEnable);
+  /* Enable interrupt TMR2_IRQn request in the NVIC. */
+  EnableIRQ(TMR2_IRQN);
+  /* Start the timer - select the timer counting mode */
+  QTMR_StartTimer(TMR2_PERIPHERAL, TMR2_CHANNEL_0_CHANNEL, kQTMR_PriSrcRiseAndFallEdge);
+}
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 static void BOARD_InitPeripherals_CommonPostInit(void)
@@ -508,8 +492,8 @@ void BOARD_InitPeripherals(void)
   LPUART1_init();
   ADC1_init();
   LPSPI4_init();
-  ADC_ETC_init();
   TMR1_init();
+  TMR2_init();
   /* Common post-initialization */
   BOARD_InitPeripherals_CommonPostInit();
 }
