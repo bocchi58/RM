@@ -70,8 +70,8 @@ void TMR2_IRQHandler(void)
 }
 
 
-volatile uint32_t g_EncoderCount = 0;
-
+uint32_t g_EncoderCount = 0;
+uint32_t g_encoder = 0;
 //采集旋钮的数据  Encoder_A Encoder_B Encoder_C
 void TMR1_IRQHandler(void)
 {
@@ -80,9 +80,11 @@ void TMR1_IRQHandler(void)
 
     uint32_t status = QTMR_GetStatus(TMR1_PERIPHERAL, TMR1_CHANNEL_A);
 
+    //判断定时器溢出
+
     if (status & kQTMR_EdgeFlag)
     {
-        /* Increment or decrement the count based on the direction */
+        //判断方向
         if (GPIO_PinRead(GPIO2, 7) == 1) // Assuming A phase connected to GPIO2 pin 7
         {
             g_EncoderCount++;

@@ -26,13 +26,6 @@ void Delayms(uint16_t t)
 
 }
 /********************************************************/
-//清屏函数
-/********************************************************/
-void LCD_ClearScreen(void)
-{
-
-}
-/********************************************************/
 //
 /********************************************************/
 void LCD_WriteCommand(uint32_t command)
@@ -155,7 +148,8 @@ void LCD_WR_REG(uint8_t data)
 	 GPIO_PinWrite(LCD_CS_GPIO,LCD_CS_PIN,0);//拉低CS
 	 GPIO_PinWrite(LCD_RES_GPIO,LCD_RES_PIN,0);//拉低RS
 	 LPSPI_WriteData(LPSPI4, data);
-	 GPIO_PinWrite(LCD_CS_GPIO,LCD_CS_PIN,1);//拉高CS
+	 GPIO_PinWrite(LCD_CS_GPIO,LCD_CS_PIN,1);
+	 GPIO_PinWrite(LCD_SCREEN_DC_GPIO,LCD_SCREEN_DC_PIN,1);//拉高CS
 }
 
 void LCD_WriteRAM_Prepare(void)
